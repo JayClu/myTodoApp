@@ -1,19 +1,19 @@
 package hoangloc.mytodoapp
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.time.Instant
 import java.util.Date
 
+
+@Entity
 data class Todo(
-    var id: Int,
+
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
     var title: String,
     var createAt: Date
 )
 
-fun getExpTodo(): List<Todo>{
-    return listOf<Todo>(
-        Todo(1, "Buy milk", Date.from(Instant.now())),
-        Todo(2, "Buy water", Date.from(Instant.now())),
-        Todo(3, "Buy cheese", Date.from(Instant.now()))
-    )
-}
+
 
