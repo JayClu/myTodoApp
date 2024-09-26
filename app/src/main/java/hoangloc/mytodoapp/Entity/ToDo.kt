@@ -1,8 +1,7 @@
-package hoangloc.mytodoapp
+package hoangloc.mytodoapp.Entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.Instant
 import java.util.Date
 
 

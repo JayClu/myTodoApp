@@ -1,11 +1,10 @@
-package hoangloc.mytodoapp
+package hoangloc.mytodoapp.ViewModel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.viewModelScope
-import hoangloc.mytodoapp.db.TodoDao
+import hoangloc.mytodoapp.Entity.Todo
+import hoangloc.mytodoapp.MainApplication
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.Instant

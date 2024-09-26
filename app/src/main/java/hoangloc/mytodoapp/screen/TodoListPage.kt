@@ -1,4 +1,4 @@
-package hoangloc.mytodoapp
+package hoangloc.mytodoapp.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,6 +31,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import hoangloc.mytodoapp.Entity.Todo
+import hoangloc.mytodoapp.R
+import hoangloc.mytodoapp.ViewModel.TodoViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -41,6 +45,7 @@ fun TodoListpage(viewModel: TodoViewModel){
 
     Column(
         modifier = Modifier
+            .fillMaxWidth()
             .fillMaxHeight()
             .padding(8.dp)
 
@@ -49,10 +54,13 @@ fun TodoListpage(viewModel: TodoViewModel){
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
+            horizontalArrangement = Arrangement.Absolute.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ){
-            OutlinedTextField(value = inputtext, onValueChange = {
+            OutlinedTextField(
+                modifier = Modifier.padding(2.dp)
+                    .width(260.dp)
+                ,value = inputtext, onValueChange = {
                 inputtext = it
             })
 
@@ -67,7 +75,7 @@ fun TodoListpage(viewModel: TodoViewModel){
         todolist?.let {
             LazyColumn(
                 content = {
-                    itemsIndexed(it) { index: Int, item: Todo ->
+                    itemsIndexed(it.reversed()) { index: Int, item: Todo ->
                         TodoItem(item = item, onDelete = {
                             viewModel.deleteTodo(item.id)
                         })
@@ -81,7 +89,6 @@ fun TodoListpage(viewModel: TodoViewModel){
             text = "No Todo")
     }
 }
-
 
 @Composable
 fun TodoItem(item: Todo, onDelete: () -> Unit = {}) {

@@ -3,7 +3,7 @@ package hoangloc.mytodoapp.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import hoangloc.mytodoapp.Todo
+import hoangloc.mytodoapp.Entity.Todo
 
 
 @Database(entities = [Todo::class], version = 1)
